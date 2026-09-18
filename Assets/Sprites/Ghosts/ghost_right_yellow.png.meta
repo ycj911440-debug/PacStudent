@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: c796942d091104945835047d4aca3182
+guid: cf01f577173e74dbd8373ebf38636309
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5890726344488074381
-    second: level_0
+      213: 2026998603704054962
+    second: ghost_right_yellow_0
   - first:
-      213: 7705593239404432061
-    second: level_1
+      213: -5245611688382960472
+    second: ghost_right_yellow_1
   - first:
-      213: 1254794454132428572
-    second: level_2
-  - first:
-      213: -1379242253812482952
-    second: level_3
-  - first:
-      213: 292572552452549436
-    second: level_4
+      213: 4675598912939104171
+    second: ghost_right_yellow_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,29 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OutsideWall
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dba4a5aa934cfea60800000000000000
-      internalID: 7705593239404432061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostExitWall
+      name: ghost_right_yellow_0
       rect:
         serializedVersion: 2
         x: 0
@@ -149,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1f81b868ece96110800000000000000
-      internalID: 1254794454132428572
+      spriteID: 2b43ef59d78512c10800000000000000
+      internalID: 2026998603704054962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: InsideCorner
+      name: ghost_right_yellow_1
       rect:
         serializedVersion: 2
         x: 32
@@ -171,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87c3c4a4a72fbdce0800000000000000
-      internalID: -1379242253812482952
+      spriteID: 8aceb4c36f7d337b0800000000000000
+      internalID: -5245611688382960472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TJunction
+      name: ghost_right_yellow_2
       rect:
         serializedVersion: 2
         x: 0
@@ -193,52 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3ba6f3bf2d6f0400800000000000000
-      internalID: 292572552452549436
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: OutsideCorner
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e266a7b3c015f4390919bf6b899e4a4f
-      internalID: 436965506
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: InsideWall
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 832a8ad4d376b47538ac3c1198945468
-      internalID: -911538509
+      spriteID: ba710fd507013e040800000000000000
+      internalID: 4675598912939104171
       vertices: []
       indices: 
       edges: []
@@ -247,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3b2eca34c5605447bbc28f7e1baffb6c
+    spriteID: f7c0c3855b09c40a8bf41e57e9198615
     internalID: 0
     vertices: []
     indices: 
@@ -259,12 +187,9 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      GhostExitWall: 1254794454132428572
-      InsideCorner: -1379242253812482952
-      InsideWall: -911538509
-      OutsideCorner: 436965506
-      OutsideWall: 7705593239404432061
-      TJunction: 292572552452549436
+      ghost_right_yellow_0: 2026998603704054962
+      ghost_right_yellow_1: -5245611688382960472
+      ghost_right_yellow_2: 4675598912939104171
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
