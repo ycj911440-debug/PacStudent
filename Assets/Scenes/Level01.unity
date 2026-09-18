@@ -5671,6 +5671,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c143ec154c1fa40d6858193497f8478e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
+  outsideCorner: {fileID: 8748601974099945949, guid: babe10753701a481fadb6a3779321057, type: 3}
+  outsideWall: {fileID: 3534896259783610916, guid: 27fb801ad1a5e4b97a1336f31a3b3185, type: 3}
+  insideCorner: {fileID: 4906928875238326952, guid: b77cf70cc3c6240269216c617eed3ac2, type: 3}
+  tjunction: {fileID: 8904846727852385629, guid: 163e54adab4f94e3d8614855b4b25ce0, type: 3}
+  ghostExitWall: {fileID: 7279463347650174206, guid: b5d9ff418970542e9baf8f353d57e51f, type: 3}
+  normalPellet: {fileID: 8842514737242231896, guid: 17154048f0d3d45908052e83044975c6, type: 3}
+  powerPellet: {fileID: 2124652392020045987, guid: 3773037cc5b6c4ef49a10355f3633232, type: 3}
 --- !u!4 &859078266
 Transform:
   m_ObjectHideFlags: 0
