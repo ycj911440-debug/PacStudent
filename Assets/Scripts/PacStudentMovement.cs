@@ -9,10 +9,10 @@ public class PacStudentMovement : MonoBehaviour
 
     private Vector3[] spots =
     {
-        new Vector3(1.5f, -0.5f, 0f),
-        new Vector3(6.5f, -0.5f, 0f),
-        new Vector3(6.5f, -4.5f, 0f),
-        new Vector3(1.5f, -4.5f, 0f)
+        new Vector3(1f, -1f, 0f),
+        new Vector3(6f, -1f, 0f),
+        new Vector3(6f, -5f, 0f),
+        new Vector3(1f, -5f, 0f)
     };
 
     private int currentSpot = 0;
