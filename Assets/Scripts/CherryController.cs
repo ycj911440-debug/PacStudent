@@ -60,6 +60,7 @@ public class CherryController : MonoBehaviour
 
         startPosition = levelCenter - offset;
         currentCherry = Instantiate(cherryPrefab, startPosition, Quaternion.identity);
+        spawnTimer = 5f;
         float distance = Vector3.Distance(startPosition, endPosition);
         moveDuration = distance / moveSpeed;
         moveTime = 0f;

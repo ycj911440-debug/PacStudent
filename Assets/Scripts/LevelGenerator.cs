@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    private const int MapWidth = 27;
+    private const int MapWidth = 28;
     private const int MapHeight = 29;
 
     private int[,] levelMap = new int[MapHeight, MapWidth];

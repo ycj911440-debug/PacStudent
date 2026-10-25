@@ -6,9 +6,14 @@ public class PacStudentController : MonoBehaviour
     private Animator animator;
 
     public LevelGenerator levelGenerator;
+    public HUDController hudController;
     public AudioSource moveAudio;
     public AudioSource pelletAudio;
+    public AudioSource powerPelletAudio;
+    public AudioSource cherryAudio;
+    public AudioSource wallCollsionAudio;
     public ParticleSystem movementParticles;
+    public ParticleSystem wallHitParticles;
     public float speed = 5f;
     private Vector3 lastInput;
     private Vector3 currentInput;
@@ -17,6 +22,7 @@ public class PacStudentController : MonoBehaviour
     private float moveTime;
     private float moveDuration;
     private bool isMoving;
+    private bool wallHitPlayed;
 
     void Start()
     {
@@ -31,15 +37,19 @@ public class PacStudentController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
             lastInput = Vector3.up;
+            wallHitPlayed = false;
         
         if (Input.GetKeyDown(KeyCode.S))
             lastInput = Vector3.down;
+            wallHitPlayed = false;
         
         if (Input.GetKeyDown(KeyCode.A))
             lastInput = Vector3.left;
+            wallHitPlayed = false;
 
         if (Input.GetKeyDown(KeyCode.D))
             lastInput = Vector3.right;
+            wallHitPlayed = false;
         
         if (isMoving == false)
         {
@@ -49,7 +59,8 @@ public class PacStudentController : MonoBehaviour
             {
                 currentInput = lastInput;
             }
-
+            
+            CheckTunnel();
             nextPosition = transform.position + currentInput;
 
             if (currentInput != Vector3.zero && levelGenerator.IsWalkable(nextPosition))
@@ -68,9 +79,20 @@ public class PacStudentController : MonoBehaviour
             else
             {
                 animator.speed = 0f;
-
                 StopMovementAudio();
                 StopMovementParticles();
+                Vector3 hitDirection = currentInput;
+
+                if (hitDirection == Vector3.zero)
+                {
+                    hitDirection = lastInput;
+                }
+
+                if (hitDirection != Vector3.zero && wallHitPlayed == false)
+                {
+                    PlayWallHit(hitDirection);
+                    wallHitPlayed = true;
+                }
             }
         }
         
@@ -196,6 +218,70 @@ public class PacStudentController : MonoBehaviour
         if (movementParticles.isPlaying == true)
         {
             movementParticles.Stop();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        if (otherCollider.CompareTag("Pellet"))
+        {
+            Destroy(otherCollider.gameObject);
+            hudController.AddScore(10);
+        }
+        else if (otherCollider.CompareTag("PowerPellet"))
+        {
+            Destroy(otherCollider.gameObject);
+            hudController.AddScore(50);
+
+            if (powerPelletAudio.isPlaying == false)
+            {
+                powerPelletAudio.Play();
+            }
+        }
+        else if (otherCollider.CompareTag("Cherry"))
+        {
+            Destroy(otherCollider.gameObject);
+            hudController.AddScore(100);
+
+            if (cherryAudio.isPlaying == false)
+            {
+                cherryAudio.Play();
+            }
+        }
+    }
+
+    void PlayWallHit(Vector3 hitDirection)
+    {
+        wallHitParticles.transform.position = transform.position + hitDirection * 0.5f;
+        wallHitParticles.Stop();
+        wallHitParticles.Play();
+
+        if (wallCollsionAudio.isPlaying == true)
+        {
+            wallCollsionAudio.Stop();
+        }
+
+        wallCollsionAudio.Play();
+    }
+
+    void CheckTunnel()
+    {
+        int currentY = Mathf.RoundToInt(transform.position.y);
+
+        if (currentY == -14)
+        {
+            if (transform.position.x <= 0f && currentInput == Vector3.left)
+            {
+                transform.position = new Vector3(27f, -14f, transform.position.z);
+                startPosition = transform.position;
+                targetPosition = transform.position;
+            }
+            else if (transform.position.x >= 27f && currentInput == Vector3.right)
+            {
+                transform.position = new Vector3(0f, -14f, transform.position.z);
+                startPosition = transform.position;
+                targetPosition = transform.position;
+            }
         }
     }
 }
