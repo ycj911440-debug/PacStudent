@@ -7,6 +7,8 @@ public class PacStudentController : MonoBehaviour
 
     public LevelGenerator levelGenerator;
     public AudioSource moveAudio;
+    public AudioSource pelletAudio;
+    public ParticleSystem movementParticles;
     public float speed = 5f;
     private Vector3 lastInput;
     private Vector3 currentInput;
@@ -60,19 +62,15 @@ public class PacStudentController : MonoBehaviour
                 SetAnimationDirection();
                 animator.speed = 1f;
 
-                if (moveAudio.isPlaying == false)
-                {
-                    moveAudio.Play();
-                }
+                PlayMovementAudio();
+                PlayMovementParticles();
             }
             else
             {
                 animator.speed = 0f;
 
-                if (moveAudio.isPlaying == true)
-                {
-                    moveAudio.Stop();
-                }
+                StopMovementAudio();
+                StopMovementParticles();
             }
         }
         
@@ -112,6 +110,92 @@ public class PacStudentController : MonoBehaviour
         else if (currentInput == Vector3.right)
         {
             animator.SetInteger("Direction", 3);
+        }
+    }
+
+    bool HasPellet(Vector3 position)
+    {
+        GameObject[] pellets = GameObject.FindGameObjectsWithTag("Pellet");
+
+        for (int i = 0; i < pellets.Length; i++)
+        {
+            float distance = Vector3.Distance(pellets[i].transform.position, position);
+
+            if (distance < 0.1f)
+            {
+                return true;
+            }
+        }
+
+        GameObject[] powerPellets = GameObject.FindGameObjectsWithTag("PowerPellet");
+
+        for (int i = 0; i < powerPellets.Length; i++)
+        {
+            float distance = Vector3.Distance(powerPellets[i].transform.position, position);
+
+            if (distance < 0.1f)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void PlayMovementAudio()
+    {
+        if (HasPellet(targetPosition) == true)
+        {
+            if (moveAudio.isPlaying == true)
+            {
+                moveAudio.Stop();
+            }
+
+            if (pelletAudio.isPlaying == false)
+            {
+                pelletAudio.Play();
+            } 
+        }
+        else
+        {
+            if (pelletAudio.isPlaying == true)
+            {
+                pelletAudio.Stop();
+            }
+
+            if (moveAudio.isPlaying == false)
+            {
+                moveAudio.Play();
+            }
+        }
+    }
+
+    void StopMovementAudio()
+    {
+        if (moveAudio.isPlaying == true)
+        {
+            moveAudio.Stop();
+        }
+
+        if (pelletAudio.isPlaying == true)
+        {
+            pelletAudio.Stop();
+        }
+    }
+
+    void PlayMovementParticles()
+    {
+        if (movementParticles.isPlaying == false)
+        {
+            movementParticles.Play();
+        }
+    }
+
+    void StopMovementParticles()
+    {
+        if (movementParticles.isPlaying == true)
+        {
+            movementParticles.Stop();
         }
     }
 }
