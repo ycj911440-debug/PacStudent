@@ -2,41 +2,40 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject outsideCorner;
-    public GameObject outsideWall;
-    public GameObject insideCorner;
-    public GameObject tjunction;
-    public GameObject ghostExitWall;
-    public GameObject normalPellet;
-    public GameObject powerPellet;
+    private const int MapWidth = 28;
+    private const int MapHeight = 29;
+
+    private int[,] levelMap = new int[MapHeight, MapWidth];
     
-    int[,] levelMap =
+    private void Awake()
     {
-        {1,2,2,2,2,2,2,2,2,2,2,2,2,7},
-        {2,5,5,5,5,5,5,5,5,5,5,5,5,4},
-        {2,5,3,4,4,3,5,3,4,4,4,3,5,4},
-        {2,6,4,0,0,4,5,4,0,0,0,4,5,4},
-        {2,5,3,4,4,3,5,3,4,4,4,3,5,3},
-        {2,5,5,5,5,5,5,5,5,5,5,5,5,5},
-        {2,5,3,4,4,3,5,3,3,5,3,4,4,4},
-        {2,5,3,4,4,3,5,4,4,5,3,4,4,3},
-        {2,5,5,5,5,5,5,4,4,5,5,5,5,4},
-        {1,2,2,2,2,1,5,4,3,4,4,3,0,4},
-        {0,0,0,0,0,2,5,4,3,4,4,3,0,3},
-        {0,0,0,0,0,2,5,4,4,0,0,0,0,0},
-        {0,0,0,0,0,2,5,4,4,0,3,4,4,8},
-        {2,2,2,2,2,1,5,3,3,0,4,0,0,0},
-        {0,0,0,0,0,0,5,0,0,0,4,0,0,0},
-    };
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+
+        for (int i = 0; i < walls.Length; i++)
+        {
+            GameObject wall = walls[i];
+            int column = Mathf.RoundToInt(wall.transform.position.x);
+            int row = Mathf.RoundToInt(-wall.transform.position.y);
+
+            if (row >= 0 && row < MapHeight && column >=0 && column < MapWidth)
+            {
+                levelMap[row, column] = 1;
+            }
+        }
+    }
+    
+    public bool IsWalkable(Vector3 position)
     {
-        
+        int column = Mathf.RoundToInt(position.x);
+        int row = Mathf.RoundToInt(-position.y);
+
+        if (row < 0 || row >= MapHeight || column < 0 || column >= MapWidth)
+        {
+            return false;
+        }
+
+        return levelMap[row, column] == 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
