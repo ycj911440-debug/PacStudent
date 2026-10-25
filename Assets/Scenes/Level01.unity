@@ -2477,7 +2477,7 @@ Transform:
   m_GameObject: {fileID: 121012487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.01, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19304,13 +19304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c143ec154c1fa40d6858193497f8478e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
-  outsideCorner: {fileID: 8748601974099945949, guid: babe10753701a481fadb6a3779321057, type: 3}
-  outsideWall: {fileID: 3534896259783610916, guid: 27fb801ad1a5e4b97a1336f31a3b3185, type: 3}
-  insideCorner: {fileID: 4906928875238326952, guid: b77cf70cc3c6240269216c617eed3ac2, type: 3}
-  tjunction: {fileID: 8904846727852385629, guid: 163e54adab4f94e3d8614855b4b25ce0, type: 3}
-  ghostExitWall: {fileID: 7279463347650174206, guid: b5d9ff418970542e9baf8f353d57e51f, type: 3}
-  normalPellet: {fileID: 8842514737242231896, guid: 17154048f0d3d45908052e83044975c6, type: 3}
-  powerPellet: {fileID: 2124652392020045987, guid: 3773037cc5b6c4ef49a10355f3633232, type: 3}
 --- !u!4 &859078266
 Transform:
   m_ObjectHideFlags: 0
@@ -34629,7 +34622,6 @@ GameObject:
   - component: {fileID: 1624398558}
   - component: {fileID: 1624398557}
   - component: {fileID: 1624398556}
-  - component: {fileID: 1624398559}
   - component: {fileID: 1624398566}
   - component: {fileID: 1624398565}
   - component: {fileID: 1624398564}
@@ -34637,6 +34629,7 @@ GameObject:
   - component: {fileID: 1624398562}
   - component: {fileID: 1624398561}
   - component: {fileID: 1624398560}
+  - component: {fileID: 1624398567}
   m_Layer: 0
   m_Name: PacStudent
   m_TagString: Untagged
@@ -34740,20 +34733,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1624398559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624398555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc36fc707b46c4a16a7a24acba13adb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PacStudentMovement
-  moveAudio: {fileID: 1624398566}
-  speed: 2
 --- !u!82 &1624398560
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35433,6 +35412,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1624398567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624398555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf4d9689edbe4c63a3310228b4f8b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PacStudentController
+  levelGenerator: {fileID: 859078265}
+  moveAudio: {fileID: 1624398566}
+  speed: 5
 --- !u!1001 &1625739388
 PrefabInstance:
   m_ObjectHideFlags: 0
